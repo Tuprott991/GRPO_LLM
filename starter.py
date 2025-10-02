@@ -532,8 +532,8 @@ def main() -> None:
     eval_every = 10
 
     # CHANGING HYPERPARAMETERS for main assignment
-    loss_type = "grpo" # or "dr_grpo"
-    max_tokens = 512 # or 512, 1024
+    loss_type = "dr_grpo" # or "dr_grpo"
+    max_tokens = 256 # or 512, 1024
     
     # Initialization
     use_std_norm = loss_type == "dr_grpo"
