@@ -507,7 +507,7 @@ def train(
 
 def init_policy(model_id: str, device: str) -> Tuple[PreTrainedModel, AutoTokenizer]:
     model = AutoModelForCausalLM.from_pretrained(
-        model_id, torch_dtype=torch.bfloat16, attn_implementation="flash_attention_2", use_cache=False
+        model_id, torch_dtype=torch.bfloat16, attn_implementation="sdpa", use_cache=False
     )
     tokenizer = AutoTokenizer.from_pretrained(model_id)
     model.to(device).train()
