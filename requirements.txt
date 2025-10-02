@@ -1,0 +1,14 @@
+# Core ML/DL Framework
+torch
+
+# Hugging Face ecosystem
+transformers
+datasets
+
+# High-throughput LLM serving
+vllm
+flash-attn # Required for attn_implementation="flash_attention_2"
+
+# Logging and environment variables
+tensorboard
+python-dotenv
