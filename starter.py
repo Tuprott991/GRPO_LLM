@@ -441,7 +441,18 @@ def grpo_microbatch_step(
     policy_log_probs = get_response_log_probs(policy, input_ids, labels)
     old_log_probs = policy_log_probs.detach()
     advantages = advantages_per_seq.unsqueeze(-1)
-    loss_per_token, metadata = compute_loss(advantages, policy_log_probs, old_log_probs, clip_range)
+    # compute_loss may return (loss_per_token, metadata) or (loss_per_token, metadata, ...)
+    res = compute_loss(advantages, policy_log_probs, old_log_probs, clip_range)
+
+    # Validate and unpack robustly
+    if isinstance(res, (tuple, list)):
+        if len(res) >= 2:
+            loss_per_token, metadata = res[0], res[1]
+        else:
+            raise ValueError(f"compute_loss returned unexpected length {len(res)}; expected >=2")
+    else:
+        raise TypeError(f"compute_loss returned {type(res)}, expected tuple or list")
+
     if loss_type == "grpo":
         loss = masked_mean(loss_per_token, response_mask)
     elif loss_type == "dr_grpo":
