@@ -533,7 +533,7 @@ def main() -> None:
 
     # CHANGING HYPERPARAMETERS for main assignment
     loss_type = "grpo" # or "dr_grpo"
-    max_tokens = 256 # or 512, 1024
+    max_tokens = 512 # or 512, 1024
     
     # Initialization
     use_std_norm = loss_type == "dr_grpo"
@@ -566,7 +566,7 @@ def main() -> None:
     
     # Logging
     timestamp = int(datetime.datetime.now(datetime.timezone.utc).timestamp())
-    log_dir = os.path.join("./output", "tb", f"hw_a2_{loss_type}", str(timestamp))
+    log_dir = os.path.join("./output2", "tb", f"hw_a2_{loss_type}", str(timestamp))
     os.makedirs(log_dir, exist_ok=True)
     writer = SummaryWriter(log_dir=log_dir)
     
@@ -584,7 +584,7 @@ def main() -> None:
     )
     
     # Save model
-    out_dir = os.path.join("./output", f"hw_a2_solution_{timestamp}")
+    out_dir = os.path.join("./output2", f"hw_a2_solution_{timestamp}")
     os.makedirs(out_dir, exist_ok=True)
     policy.save_pretrained(out_dir)
     tokenizer.save_pretrained(out_dir)
