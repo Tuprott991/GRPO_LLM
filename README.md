@@ -3,8 +3,8 @@
 This project implements the **Group-Reward Policy Optimization (GRPO)** algorithm to fine-tune a language model on the "Countdown" math task. The goal is to train an LLM to generate correct mathematical equations that reach a target number using a given set of integers.
 
 ## Best model
-- The baseline model (Qwen3-1.7B) with zero-shot, max_tokens = 512 achieved ~ 15% accuracy
-- My GRPO Qwen3-1.7B-Countdown with max_token = 512 achived ~ 54% accuracy
+- The baseline model (Qwen3-1.7B) with zero-shot, max_tokens = 512 achieved ~ **15% accuracy**
+- My DR.GRPO Qwen3-1.7B-Countdown with max_token = 512 achived ~ **54% accuracy**
 - [Qwen3-1.7B-Countdown (Vantuk)](https://huggingface.co/Vantuk/Qwen3-1.7B-Countdown)
 
 ## Setup
